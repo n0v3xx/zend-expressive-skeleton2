@@ -1,0 +1,13 @@
+exp_web:
+    container_name: exp_web
+    build: ./docker
+    dockerfile: Dockerfile
+    ports:
+        - "8775:80"
+    volumes:
+        - $SSH_AUTH_SOCK:$SSH_AUTH_SOCK
+        - .:/var/www/application
+    environment:
+        - SSH_AUTH_SOCK
+    working_dir: /var/www/application
+    hostname: exp-web-container
